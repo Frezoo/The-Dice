@@ -7,15 +7,13 @@ using Random = UnityEngine.Random;
 
 public class DiceThrow : MonoBehaviour
 {
-    [Header("Бросок")] [Range(0, 10)] [SerializeField]
-    private float maxDeltaX;
-
+    [Header("Бросок")] 
+    [Range(0, 10)] [SerializeField] private float maxDeltaX;
     [Range(0, 10)] [SerializeField] private float maxDeltaY;
     [Range(0, 10)] [SerializeField] private float maxDeltaZ;
 
-    [Header("Вращение")] [Range(0, 10)] [SerializeField]
-    private float maxTorqueX;
-
+    [Header("Вращение")] 
+    [Range(0, 10)] [SerializeField] private float maxTorqueX;
     [Range(0, 10)] [SerializeField] private float maxTorqueY;
     [Range(0, 10)] [SerializeField] private float maxTorqueZ;
     
@@ -42,6 +40,7 @@ public class DiceThrow : MonoBehaviour
                         Random.Range(0, maxTorqueZ));
                     
                     dices[i].transform.position = diceInitPositions[i];
+                    dices[i].GetComponent<DiceManager>().EnableFaceColliders();
                     
                     rb.linearVelocity = Vector3.zero;
                     rb.angularVelocity = Vector3.zero;

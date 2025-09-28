@@ -2449,6 +2449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7621379045721899019}
   - component: {fileID: 7357235256704131342}
+  - component: {fileID: 4496461572649621805}
   m_Layer: 6
   m_Name: Dice
   m_TagString: Untagged
@@ -2506,6 +2507,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4496461572649621805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7865175025828009878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf839910e3c93554ca028a99a8eb9411, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  diceFacesColliders:
+  - {fileID: 5210168344682969687}
+  - {fileID: 4093346812521766217}
+  - {fileID: 8742451143253851962}
+  - {fileID: 6729065016159081259}
+  - {fileID: 4531676366061593146}
+  - {fileID: 5067771469488331250}
 --- !u!1 &7890865785401255298
 GameObject:
   m_ObjectHideFlags: 0

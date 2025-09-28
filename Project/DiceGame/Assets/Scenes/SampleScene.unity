@@ -944,7 +944,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caba9e82cf229ab42939056d07820e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionToRebind: {fileID: 3571529748570178373, guid: 0c465421052372f4ca0cfa65867297e4, type: 3}
 --- !u!4 &1649363160
 Transform:
   m_ObjectHideFlags: 0

@@ -42,7 +42,7 @@
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Keyboard&Mouse",
                     "action": "RebindThrow",
                     "isComposite": false,
                     "isPartOfComposite": false

@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int score;
     [SerializeField] private TopFaceReader topFaceReader;
+    private int score;
+    
     private void Awake()
     {
         topFaceReader.OnTopFaceRead += AddScore;
