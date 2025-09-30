@@ -44,8 +44,6 @@ public class Spawner : MonoBehaviour
             {
                 var dice = Instantiate(dicePrefab, spawnPoints[i].position, Quaternion.identity);
                 dicePool.Add(dice);
-
-                //diceThrow.AddDice(dice);
             }
         }
         else if (countOfDice >= 1 && dicePool.Count > countOfDice)
@@ -58,6 +56,14 @@ public class Spawner : MonoBehaviour
                 dicePool.RemoveAt(lastIndex);
             }
         }
+
+        for (int i = 0; i < dicePool.Count; i++)
+        {
+            dicePool[i].transform.position = spawnPoints[i].position;
+            dicePool[i].transform.rotation = spawnPoints[i].rotation;
+            dicePool[i].GetComponent<Rigidbody>().isKinematic = true;
+        }
+        
 
         diceThrow.AddDiceList(dicePool);
         scoreManager.SetDicesCount(countOfDice);
