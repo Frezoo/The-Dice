@@ -23,6 +23,8 @@ public class UIView : MonoBehaviour
    [SerializeField] private ScoreManager scoreManager;
    [SerializeField] private DiceThrow diceThrow;
 
+
+   
    void Awake()
    {
       gameRules.ConditionCalculated += DrawConditionCalculated;
@@ -44,27 +46,8 @@ public class UIView : MonoBehaviour
       DrawConditionInputField.text = drawCondition.ToString();
    }
 
-   void DrawScore(int score,GameConditional gameConditional)
+   void DrawScore(int score, string colorCode)
    {
-      var colorCode = "";
-      switch (gameConditional)
-      {
-         case GameConditional.Draw:
-            colorCode = "#FFEB04";
-            break;
-         case GameConditional.Defeat:
-            colorCode = "#FF0000";
-            Debug.Log("Defeat");
-            break;
-         case GameConditional.Win:
-            colorCode = "#7EFF00";
-            break;
-         default:
-            Debug.Log("Интересный случай");
-            colorCode = "FFFFFF";
-            break;
-      }
-      
       ScoreText.text = $"Выпало очков <color={colorCode}>:{score}</color>";
    }
 
