@@ -7,30 +7,32 @@ using Random = UnityEngine.Random;
 
 public class DiceThrow : MonoBehaviour
 {
-    [Header("Бросок")] 
-    [Range(0, 10)] [SerializeField] private float maxDeltaX;
+    [Header("Бросок")] [Range(0, 10)] [SerializeField]
+    private float maxDeltaX;
+
     [Range(0, 10)] [SerializeField] private float maxDeltaY;
     [Range(0, 10)] [SerializeField] private float maxDeltaZ;
 
-    [Header("Вращение")] 
-    [Range(0, 10)] [SerializeField] private float maxTorqueX;
+    [Header("Вращение")] [Range(0, 10)] [SerializeField]
+    private float maxTorqueX;
+
     [Range(0, 10)] [SerializeField] private float maxTorqueY;
     [Range(0, 10)] [SerializeField] private float maxTorqueZ;
-    
-    [Header("Ссылки на компоненты")]
-    [SerializeField] private UIController uiController;
-    
+
+    [Header("Ссылки на компоненты")] [SerializeField]
+    private UIController uiController;
+
     private List<GameObject> dices = new List<GameObject>();
-    private List<Transform> diceInitTransforms = new ();
+    private List<Transform> diceInitTransforms = new();
 
     public event Action StartGame;
 
 
-    void Awake()
+    private void Awake()
     {
         uiController.ThrowButtonClicked += ThrowButtonClickedDice;
     }
-    
+
     public void ThrowDiceByInputSystem(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -41,7 +43,6 @@ public class DiceThrow : MonoBehaviour
 
     private void ThrowButtonClickedDice()
     {
-        StartGame?.Invoke();
         for (int i = 0; i < dices.Count; i++)
         {
             Rigidbody rb;
@@ -52,13 +53,13 @@ public class DiceThrow : MonoBehaviour
                     Random.Range(-maxDeltaZ, maxDeltaZ));
                 var torqueVector = new Vector3(Random.Range(0, maxTorqueX), Random.Range(0, maxTorqueY),
                     Random.Range(0, maxTorqueZ));
-                    
+
                 dices[i].transform.position = diceInitTransforms[i].position;
                 dices[i].GetComponent<DiceManager>().EnableFaceColliders();
-                    
+
                 rb.linearVelocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
-                    
+
                 rb.AddTorque(torqueVector, ForceMode.Impulse);
                 rb.AddForce(throwVector, ForceMode.Impulse);
             }
@@ -67,6 +68,7 @@ public class DiceThrow : MonoBehaviour
                 Debug.Log($"У Кубика? {dices[i].name} отсутсвует Rigibody");
             }
 
+            StartGame?.Invoke();
         }
     }
 

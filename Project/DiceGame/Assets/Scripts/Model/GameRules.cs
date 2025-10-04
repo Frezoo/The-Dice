@@ -30,7 +30,7 @@ public class GameRules : MonoBehaviour
 
     public event Action<int, int, int> ConditionCalculated;
 
-    void Awake()
+    private void Awake()
     {
         spawner.DicesSpawned += CalculateGameConditions;
         uiController.WinConditionChanged += SetWinScore;
@@ -39,7 +39,7 @@ public class GameRules : MonoBehaviour
 
     }
 
-    void CalculateGameConditions(int diceCounts)
+    private void CalculateGameConditions(int diceCounts)
     {
         var maxScore = diceCounts * 6;
         winScore = maxScore / 2 + 1;
@@ -48,19 +48,19 @@ public class GameRules : MonoBehaviour
         ConditionCalculated?.Invoke(drawScore, winScore, defeatScore);
     }
 
-    void SetWinScore(int value)
+    private void SetWinScore(int value)
     {
         winScore = value;
         ConditionCalculated?.Invoke(drawScore, winScore, defeatScore);
     }
 
-    void SetDefeatScore(int value)
+    private void SetDefeatScore(int value)
     {
         defeatScore = value;
         ConditionCalculated?.Invoke(drawScore, winScore, defeatScore);
     }
 
-    void SetDrawScore(int value)
+    private void SetDrawScore(int value)
     {
         drawScore = value;
         ConditionCalculated?.Invoke(drawScore, winScore, defeatScore);

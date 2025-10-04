@@ -22,13 +22,13 @@ public class Spawner : MonoBehaviour
     public event Action<int> DicesSpawned;
 
 
-    void Awake()
+    private void Awake()
     {
         uiController.NumberOfDiceChanged += SpawnDicesChanged;
         diceThrow.AddDiceInitTransforms(spawnPoints);
     }
 
-    void SpawnDicesChanged(int countOfDice)
+    private void SpawnDicesChanged(int countOfDice)
     {
         if (diceThrow == null)
         {
@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
             return;
         }
 
-        DicesSpawned?.Invoke(countOfDice);
+       
 
         if (dicePool.Count < countOfDice)
         {
@@ -67,9 +67,10 @@ public class Spawner : MonoBehaviour
 
         diceThrow.AddDiceList(dicePool);
         scoreManager.SetDicesCount(countOfDice);
+        DicesSpawned?.Invoke(countOfDice);
     }
 
-    void OnDestroy()
+    private void OnDestroy()
     {
         uiController.NumberOfDiceChanged -= SpawnDicesChanged;
         

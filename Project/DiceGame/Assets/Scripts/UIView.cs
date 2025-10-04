@@ -6,10 +6,10 @@ public class UIView : MonoBehaviour
 {
    
    [Header("Тектсы")]
-   [SerializeField] private TextMeshProUGUI WinConditionText;
-   [SerializeField] private TextMeshProUGUI DrawConditionText;
-   [SerializeField] private TextMeshProUGUI DefeatConditionText;
-   [SerializeField] private TextMeshProUGUI ScoreText;
+   [SerializeField] private TMP_Text WinConditionText;
+   [SerializeField] private TMP_Text DrawConditionText;
+   [SerializeField] private TMP_Text DefeatConditionText;
+   [SerializeField] private TMP_Text ScoreText;
    
    [Header("Инпут филды)")]
    [SerializeField] private TMP_InputField WinConditionInputField;
@@ -25,7 +25,7 @@ public class UIView : MonoBehaviour
 
 
    
-   void Awake()
+   private void Awake()
    {
       gameRules.ConditionCalculated += DrawConditionCalculated;
       scoreManager.ScoreChanged += DrawScore;
@@ -34,7 +34,7 @@ public class UIView : MonoBehaviour
       scoreManager.AllDicesProcessed += EnableCanvasGroupInteractable;
    }
 
-   void DrawConditionCalculated(int drawCondition,int winCondition, int defeatCondition)
+   private void DrawConditionCalculated(int drawCondition,int winCondition, int defeatCondition)
    {
       WinConditionText.text = $"Очков для победы >= <color=#7EFF00>{winCondition}</color>";
       WinConditionInputField.text = winCondition.ToString();
@@ -46,9 +46,9 @@ public class UIView : MonoBehaviour
       DrawConditionInputField.text = drawCondition.ToString();
    }
 
-   void DrawScore(int score, string colorCode)
+   private void DrawScore(int score, string colorCode)
    {
-      ScoreText.text = $"Выпало очков <color={colorCode}>:{score}</color>";
+      ScoreText.text = $"Выпало очков <color=#{colorCode}>:{score}</color>";
    }
 
    private void OnDestroy()

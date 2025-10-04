@@ -30,7 +30,7 @@ public class TopFaceReader : MonoBehaviour
 
     }
 
-    int GetTopFaceView(GameObject bottomSide)
+    private int GetTopFaceView(GameObject bottomSide)
     {
         var botoomFace = 0;
         

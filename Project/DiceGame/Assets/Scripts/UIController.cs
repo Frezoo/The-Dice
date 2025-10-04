@@ -20,7 +20,7 @@ public class UIController : MonoBehaviour
     public event Action<int> DefeatConditionChanged;
     
 
-    void Awake()
+    private void Awake()
     {
         numberOfDicesField.onValueChanged.AddListener(EnterDiceCount);
         
@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
         throwButton.onClick.AddListener(MakeThrow);
     }
 
-    void EnterDiceCount(string count)
+    private void EnterDiceCount(string count)
     {
         if (int.TryParse(count, out int value))
         {
@@ -42,7 +42,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    void ChangeWinConditional(string input)
+    private void ChangeWinConditional(string input)
     {
         if (int.TryParse(input, out int value))
         {
@@ -50,7 +50,7 @@ public class UIController : MonoBehaviour
         }
     }
 
-    void ChangeDrawConditional(string input)
+    private void ChangeDrawConditional(string input)
     {
         if (int.TryParse(input, out int value))
         {
@@ -58,7 +58,7 @@ public class UIController : MonoBehaviour
         }
     }
     
-    void ChangeDefeatConditional(string input)
+    private void ChangeDefeatConditional(string input)
     {
         if (int.TryParse(input, out int value))
         {
@@ -66,7 +66,7 @@ public class UIController : MonoBehaviour
         }
     }
     
-    void MakeThrow()
+    private void MakeThrow()
     {
         ThrowButtonClicked?.Invoke();
     }

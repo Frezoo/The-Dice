@@ -8,14 +8,16 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] private GameRules gameRules;
     [SerializeField] private DiceThrow diceThrow;
     
+    [Header("Цвета")]
+    [SerializeField] private Color winColor;
+    [SerializeField] private Color drawColor;
+    [SerializeField] private Color defeatColor;
+    
     private int score;
     private int dicesCount;
     private int processedDices;
     private string colorCode = "";
     
-    private const string WinColorCode = "#7EFF00";
-    private const string DrawColorCode = "#FFEB04";
-    private const string DefeatColorCode = "#FF0000";
     
     private GameConditional currentGameConditional = GameConditional.Defeat;
     
@@ -55,7 +57,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void ClearScore()
+    private void ClearScore()
     {
         score = 0;
         processedDices = 0;
@@ -64,19 +66,19 @@ public class ScoreManager : MonoBehaviour
         ScoreChanged?.Invoke(score, colorCode);
     }
 
-    void SetScoreColor()
+    private void SetScoreColor()
     {
         switch (currentGameConditional)
         {
             case GameConditional.Draw:
-                colorCode = DrawColorCode;
+                colorCode = ColorUtility.ToHtmlStringRGB(drawColor);
                 break;
             case GameConditional.Defeat:
-                colorCode = DefeatColorCode;
+                colorCode = ColorUtility.ToHtmlStringRGB(defeatColor);
                 Debug.Log("Defeat");
                 break;
             case GameConditional.Win:
-                colorCode = WinColorCode;
+                colorCode = ColorUtility.ToHtmlStringRGB(winColor);
                 break;
             default:
                 Debug.Log("Интересный случай");
